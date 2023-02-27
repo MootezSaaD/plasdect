@@ -14,3 +14,8 @@ def load_files_by_ext(path, extension='*', encoding='utf8'):
 def write_file(path, content):
     with open(path, 'w') as f:
         f.write(content)
+
+def batch_delete(files_batch):
+    for file in files_batch:
+        os.remove(file)
+        print(f'deleted {file}')
