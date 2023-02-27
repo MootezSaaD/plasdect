@@ -1,3 +1,14 @@
+import code_tokenize as ctok
+from utils import io
+
+
+def _code_tokenize(code, lang):
+    return ctok.tokenize(code, lang=lang)
+
+mapper = {
+    'code_tokenize': _code_tokenize,
+}
+
 def tokenize(file, method, lang):
     """
     Read a source code file and returns a list of its tokens.
@@ -19,5 +30,5 @@ def tokenize(file, method, lang):
     tokens: list[str]
         List of tokens.
     """
-    tokens = []
-    return tokens
+    file_content = io.read_file(file)
+    return mapper[method](file_content, lang)
