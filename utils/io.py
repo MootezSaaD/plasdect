@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
-import glob, os
+import glob, os, py7zr, shutil
 
 def read_file(path, encoding='utf8'):
     with open(path, encoding=encoding) as file:
@@ -29,3 +29,14 @@ def _batch_delete(files_batch):
 
 def dir_files(dir):
     return list(glob.glob(os.path.join(dir, '*.code'), recursive=True))
+
+def create_folder(dir):
+    os.makedirs(dir)
+
+def copy_files(files, output):
+    for file in files:
+        shutil.copy(file, output)
+
+def zip_dir(dir, output):
+    with py7zr.SevenZipFile(output, 'w') as archive:
+        archive.writeall(dir, 'base')
