@@ -8,8 +8,8 @@ from data.ast_parser.base_operator import BaseOperator
 
 class CommentDeletion(BaseOperator):
 
-    def __init__(self, language: str):
-        super(CommentDeletion, self).__init__(language)
+    def __init__(self, parser):
+        super(CommentDeletion, self).__init__(parser)
 
     def match_from_span(self, node: Node, lines: List) -> str:
         line_start = node.start_point[0]

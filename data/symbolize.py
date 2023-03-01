@@ -10,10 +10,9 @@ def main():
     enconding = parser.add_argument("--encoding", default="utf8", help="Specify dataset encoding. Default is utf8.", type=str)
     
     args = parser.parse_args()
-    language, src, enconding, lang_kws = args.__dict__.values()
-    #sym_parser = SymbolParser(language, src, enconding, lang_kws)
-    print(f'{language} {src} {enconding} {lang_kws}')
-    #sym_parser.symbolize()
+    src, language, lang_kws, encoding = args.__dict__.values()
+    sym_parser = SymbolParser(language, src, encoding, lang_kws)
+    sym_parser.symbolize()
 
 
     

@@ -13,6 +13,8 @@ class SymbolParser:
         self.encoding = encoding
         if kwds:
             self.keywords = io.read_file_lines(kwds, self.encoding)
+        else:
+            self.keywords = []
         self.load_languages()
         self.parser = Parser()
         self.parser.set_language(self.language)
@@ -25,14 +27,16 @@ class SymbolParser:
 
     
     def symbolize(self):
-        files = io.load_files_by_ext(self.src)
-        comment_deletion_operator = CommentDeletion(language="java")
-        variable_rename_operator = VariableRenaming(language="java", keywords=self.keywords)
+        files = io.load_files_by_ext(self.src, 'code')
+        comment_deletion_operator = CommentDeletion(self.parser)
+        variable_rename_operator = VariableRenaming(self.parser, keywords=self.keywords)
+        print(files)
         for file in files:
             file_content = io.read_file(file)
             uncommented_code = comment_deletion_operator.delete_comments(file_content)
             renamed_var_code = variable_rename_operator.rename_variable(uncommented_code)
-            io.write_file(file, renamed_var_code)
+            renamed_file = file.replace('.code', '.symb')
+            io.write_file(renamed_file, renamed_var_code)
 
 
 # for node in nodes:

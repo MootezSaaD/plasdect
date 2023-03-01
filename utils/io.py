@@ -10,7 +10,9 @@ def read_file_lines(path, encoding='utf8'):
         return file.readlines()
     
 def load_files_by_ext(path, extension='*', encoding='utf8'):
-    return list(glob.iglob(os.path.join(path,'*', f'*.{extension}'), recursive=True))
+    dir = os.path.join(path, '**',f'*.{extension}')
+    print(dir)
+    return list(glob.iglob(dir, recursive=True))
 
 def write_file(path, content):
     with open(path, 'w') as f:
@@ -28,7 +30,7 @@ def _batch_delete(files_batch):
         print(f'deleted {file}')
 
 def dir_files(dir):
-    return list(glob.glob(os.path.join(dir, '*.code'), recursive=True))
+    return list(glob.glob(os.path.join(dir, '**', '*.code'), recursive=True))
 
 def create_folder(dir):
     os.makedirs(dir)

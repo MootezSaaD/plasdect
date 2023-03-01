@@ -6,8 +6,8 @@ from data.ast_parser.base_operator import BaseOperator
 
 
 class VariableRenaming(BaseOperator):
-    def __init__(self, language: str, keywords = []):
-        super(VariableRenaming, self).__init__(language)
+    def __init__(self, parser, keywords = []):
+        super(VariableRenaming, self).__init__(parser)
         self.var_node_types = {'identifier'}
         self.var_filter_types = {'class_declaration', 'method_declaration', 'method_invocation'}
         self.num_types = {'decimal_floating_point_literal', 'decimal_integer_literal'}

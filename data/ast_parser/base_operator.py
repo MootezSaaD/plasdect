@@ -3,14 +3,11 @@ Author: Nghi D. Q. Bui
 URL: https://github.com/bdqnghi/code_transformation
 """
 
-from data.ast_parser.ast_parser import ASTParser
-
 class BaseOperator():
 
-    def __init__(self, language: str):
+    def __init__(self, parser):
 
-        self.parser = ASTParser() 
-        self.parser.set_language(language)
+        self.parser = parser
        
     def parse(self, code_snippet):
         tree = self.parser.parse(bytes(code_snippet, "utf8"))
