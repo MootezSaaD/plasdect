@@ -39,9 +39,6 @@ def curator():
         sampled_pos = random.sample(pos_dir, pos)
         sampled_neg = random.sample(neg_dir, neg)
 
-        pos_dir = pos_dir - sampled_pos
-        neg_dir = neg_dir - sampled_neg
-
         new_dir = f"./experiment_{smell}"
         new_pos_dir = os.path.join(new_dir, "Positive")
         new_neg_dir = os.path.join(new_dir, "Negative")
@@ -49,8 +46,8 @@ def curator():
         create_folder(new_pos_dir)
         create_folder(new_neg_dir)
 
-        copy_files(pos_dir, new_pos_dir)
-        copy_files(neg_dir, new_neg_dir)
+        copy_files(sampled_pos, new_pos_dir)
+        copy_files(sampled_neg, new_neg_dir)
 
         zip_dir(new_pos_dir, f'{new_dir}.7z')
 
