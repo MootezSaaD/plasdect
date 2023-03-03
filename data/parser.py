@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 class SymbolParser:
     def __init__(self, language, src, encoding='utf8', kwds = None) -> None:
+        self.load_languages()
         self.language = Language(config.LANG_BUILD_PATH, language)
         self.src = src
         self.encoding = encoding
@@ -15,7 +16,6 @@ class SymbolParser:
             self.keywords = io.read_file_lines(kwds, self.encoding)
         else:
             self.keywords = []
-        self.load_languages()
         self.parser = Parser()
         self.parser.set_language(self.language)
 
