@@ -11,7 +11,6 @@ def read_file_lines(path, encoding='utf8'):
     
 def load_files_by_ext(path, extension='*', encoding='utf8'):
     dir = os.path.join(path, '**',f'*.{extension}')
-    print(dir)
     return list(glob.iglob(dir, recursive=True))
 
 def write_file(path, content):
