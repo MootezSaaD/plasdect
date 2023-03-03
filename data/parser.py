@@ -4,7 +4,7 @@ from data.ast_parser.comment_deletion import CommentDeletion
 from data.ast_parser.var_renaming import VariableRenaming
 import os
 from utils import io
-
+from tqdm import tqdm
 
 class SymbolParser:
     def __init__(self, language, src, encoding='utf8', kwds = None) -> None:
@@ -26,17 +26,19 @@ class SymbolParser:
             language_builder.build_langs()
 
     
-    def symbolize(self):
+    def symbolize(self, in_place=False):
         files = io.load_files_by_ext(self.src, 'code')
         comment_deletion_operator = CommentDeletion(self.parser)
         variable_rename_operator = VariableRenaming(self.parser, keywords=self.keywords)
-        print(files)
-        for file in files:
+        for file in tqdm(files):
             file_content = io.read_file(file)
             uncommented_code = comment_deletion_operator.delete_comments(file_content)
             renamed_var_code = variable_rename_operator.rename_variable(uncommented_code)
-            renamed_file = file.replace('.code', '.symb')
-            io.write_file(renamed_file, renamed_var_code)
+            if not in_place:
+                dst = file.replace('.code', '.symb')
+            else:
+                dst = file
+            io.write_file(dst, renamed_var_code)
 
 
 # for node in nodes:
