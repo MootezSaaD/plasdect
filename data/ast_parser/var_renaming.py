@@ -29,7 +29,7 @@ class VariableRenaming(BaseOperator):
                 func_name = text[id_children[0].start_byte: id_children[0].end_byte]
                 if func_name in self.keywords:
                     continue
-                if func_name not in func_renames and func_name not in var_renames:
+                if func_name not in func_renames:
                     func_renames[func_name] = "FUNC{}".format(len(func_renames) + 1)
                 func_nodes.append([id_children[0], func_name, func_renames[func_name]])
 
