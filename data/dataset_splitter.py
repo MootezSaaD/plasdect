@@ -57,4 +57,4 @@ def _dataset_splitter(config, root_path):
 if __name__ == "__main__":
     for s in smells_configs:
         df = _dataset_splitter(s, _path)
-        df.to_csv(os.path.join(_path, s["folder"], '.csv'), index=None)
+        df.to_csv(os.path.join(_path, f"{s['folder'].csv}"), index=None)
