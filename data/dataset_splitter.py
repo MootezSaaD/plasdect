@@ -51,10 +51,13 @@ def _dataset_splitter(config, root_path):
 
     df = [(f, 1, "train") for f in train_pos] + [(f, 0, "train") for f in train_neg] + [(f, 1, "eval") for f in eval_pos] + [(f, 0, "eval") for f in eval_neg]
 
-    return pd.DataFrame(df)
+    df = pd.DataFrame(df)
+    df.columns = ["file", "label", "split"]
+
+    return df
 
 
 if __name__ == "__main__":
     for s in smells_configs:
         df = _dataset_splitter(s, _path)
-        df.to_csv(os.path.join(_path, f"{s['folder'].csv}"), index=None)
+        df.to_csv(os.path.join(_path, f"{s['folder']}.csv"), index=None)
