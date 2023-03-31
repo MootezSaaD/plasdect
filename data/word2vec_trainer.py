@@ -24,8 +24,7 @@ def train(args):
         sentences.append(tokens)
     wvmodel = Word2Vec(sentences, min_count=args.min_occ, workers=8, vector_size=args.embedding_size, window=args.window_size, sg=1)
     print('Embedding Size : ', wvmodel.vector_size)
-    for i in range(args.epochs):
-        wvmodel.train(sentences, total_examples=len(sentences), epochs=1)
+    wvmodel.train(sentences, total_examples=len(sentences), epochs=150)
     if not os.path.exists(args.save_model_dir):
         os.mkdir(args.save_model_dir)
     save_file_path = os.path.join(args.save_model_dir, args.model_name)
