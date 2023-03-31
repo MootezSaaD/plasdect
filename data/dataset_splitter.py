@@ -2,7 +2,7 @@ import pandas as pd
 import os, random
 from utils.io import load_files_by_ext
 
-_path = ""
+_path = "/home/mootez/scratch/code_smells_dataset"
 
 smells_configs = [
 {
