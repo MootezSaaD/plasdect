@@ -1,0 +1,4 @@
+name: "ComplexConditional"
+level: "method"
+utc_weights: "./weights/*.ckpt"
+ifc_weights: "./weights/*.ckpt"

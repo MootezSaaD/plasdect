@@ -1,0 +1,4 @@
+name: "FeatureEnvy"
+level: "class"
+utc_weights: "./weights/*.ckpt"
+ifc_weights: "./weights/*.ckpt"
