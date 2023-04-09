@@ -8,6 +8,12 @@ Code smells can reveal deep underlying issues in the source code and are often r
 
 There are two main modules: `data`, and `model`.
 
+
+## Installing Dependencies
+
+`pip install -r requirements.txt`  
+Clone tree-sitter Java and CSharp grammars into `data\tree-sitter-langs`.
+
 ### Data Symbolization
 - First download the Java or CSharp raw datasets from the link listed at the end README.
 - File: `data/symbolize.py`
@@ -60,6 +66,8 @@ Arguments:
   - `method`: Graph construction method
 
 ## Resource
+- Java tree-sitter grammar: https://github.com/tree-sitter/tree-sitter-java.
+- CSharp tree-sitter grammar: https://github.com/tree-sitter/tree-sitter-c-sharp
 - Raw Java Dataset (contains 4 subfolders for each smell): https://drive.google.com/file/d/1l8B25M5wmnf8eNURFMpY5Vt4b0w8hGlR/view?usp=sharing
 - Raw CSharp Dataset (contains 4 subfolders for each smell): https://drive.google.com/file/d/1jxe3PxFqhIiNE5jn2sl7iz5XuySYMMxe/view?usp=sharing
 - Pretrained Word2Vec model on Java Corpus: https://drive.google.com/file/d/19TwT4pTDv08ziFhBZ8XTYoLNP6pXscfC/view?usp=share_link
