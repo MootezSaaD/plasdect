@@ -49,10 +49,10 @@ def _dataset_splitter(config, root_path):
     eval_pos = list(set(pos) - set(train_pos))
     eval_neg = list(set(neg) - set(train_neg))
 
-    df = [(f, 1, "train") for f in train_pos] + [(f, 0, "train") for f in train_neg] + [(f, 1, "eval") for f in eval_pos] + [(f, 0, "eval") for f in eval_neg]
+    df = [(f, 1) for f in train_pos] + [(f, 0) for f in train_neg] + [(f, 1) for f in eval_pos] + [(f, 0) for f in eval_neg]
 
     df = pd.DataFrame(df)
-    df.columns = ["file", "label", "split"]
+    df.columns = ["file", "label"]
 
     return df
 

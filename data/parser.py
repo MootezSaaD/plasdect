@@ -39,8 +39,3 @@ class SymbolParser:
             else:
                 dst = file
             io.write_file(dst, renamed_var_code)
-
-
-# for node in nodes:
-#     print(f"{node.type} - {node.text}")
-#     print(f"{'=' * 25}")
