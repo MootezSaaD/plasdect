@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Compute Code Smell</title>
+    <!-- External CSS link for beautification -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #ebebeb;
+        font-family: Arial, sans-serif;
+        color: #2c2c2c;
+      }
+      .container {
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #b5b5b5;
+        background-color: #fff;
+        padding: 30px;
+      }
+      .form-group label {
+        font-size: 1.2rem;
+      }
+      .btn-primary {
+        background-color: #36b9cc;
+        border-color: #36b9cc;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        width: 10%;
+      }
+      .btn-primary:hover {
+        background-color: #2c9faf;
+        border-color: #2c9faf;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+      .intro {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .instructions {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="intro">
+        <h1>Welcome to Code Sniffer</h1>
+        <p>This tool uses GNN to detect code smells in your code. Simply upload your code file and we'll analyze it for you.</p>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form method="POST" action="/compute" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="java-file" class="font-weight-bold">Select a Java File:</label>
+              <input type="file" class="form-control-file" id="java-file" name="java-file">
+            </div>
+            <button type="submit" class="btn btn-primary">Sniff Code Smell!!!</button>
+          </form>
+          <div class="instructions">
+            <h3>Instructions:</h3>
+            <ul>
+              <li>Make sure your Java file is error-free and compiles without any issues.</li>
+              <li>Upload only one file at a time.</li>
+              <li>Just upload your file and press the compute button!!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
